@@ -30,10 +30,11 @@ docker ps
 Running the container using docker will not restart it
 automatically if it enters an unhealthy state. To have the container
 automatically restarted when it becomes unhealthy a container orchestrator must
-be used, such as a docker service or kubernetes.
+be used, such docker swarm or kubernetes.
 
 To run the container as a docker service and allow it to heal after failure run
 the following::
+docker swarm init
 docker service create --name ftrack-service-example --env FTRACK_SERVER --env FTRACK_API_USER --env FTRACK_API_KEY ftrack-service-example:latest
 
 Check that the service is running::
