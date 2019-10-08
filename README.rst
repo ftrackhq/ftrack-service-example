@@ -30,7 +30,7 @@ docker ps
 Running the container using docker will not restart it
 automatically if it enters an unhealthy state. To have the container
 automatically restarted when it becomes unhealthy a container orchestrator must
-be used, such as a docker service, docker swarm or kubernetes.
+be used, such as a docker service or kubernetes.
 
 To run the container as a docker service and allow it to heal after failure run
 the following::
