@@ -27,12 +27,12 @@ docker run --name ftrack-service-example -it --rm --env FTRACK_SERVER --env FTRA
 See that the container is working and healthy::
 docker ps
 
-Running the container the container using docker will not restart it
+Running the container using docker will not restart it
 automatically if it enters an unhealthy state. To have the container
 automatically restarted when it becomes unhealthy a container orchestrator must
-be used, such as docker swarm or kubernetes.
+be used, such as a docker service, docker swarm or kubernetes.
 
-To run the container using docker swarm and allow it to heal after failure run
+To run the container as a docker service and allow it to heal after failure run
 the following::
 docker service create --name ftrack-service-example --env FTRACK_SERVER --env FTRACK_API_USER --env FTRACK_API_KEY ftrack-service-example:latest
 
