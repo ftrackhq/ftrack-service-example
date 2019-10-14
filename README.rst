@@ -5,26 +5,31 @@ The python module can be packaged as a docker image to
 simplify execution and distribution. The module has a built in health check
 which is used to test that the module stay in a healthy state.
 
-Note: To use the commands below the current shell is expected to have the
-following environment variables exported FTRACK_SERVER, FTRACK_API_USER, FTRACK_API_KEY
-and have a python virtual environment activated.
+.. note::
+
+    General knowledge on python, how ftrack actions are built and how to build
+    and run docker containers is expected. To use the commands below the current
+    shell is expected to have the following environment variables exported
+    FTRACK_SERVER, FTRACK_API_USER, FTRACK_API_KEY and have a python virtual
+    environment activated.
 
 Install for development::
 pip install -e .
 
-Run the module::
+Run the module with python::
 python -m ftrack_service_example
 
-Run the health check::
+Run the health check. It will exit with code 0 if the service is running and
+hang forever if not::
 python -m ftrack_service_example --healthcheck
 
 Build as a docker image::
 docker build -t ftrack-service-example:latest --target final .
 
-Run the docker image::
+Test the image by running it as a container in the foreground::
 docker run --name ftrack-service-example -it --rm --env FTRACK_SERVER --env FTRACK_API_USER --env FTRACK_API_KEY ftrack-service-example:latest
 
-See that the container is working and healthy::
+See that the container is working and is healthy::
 docker ps
 
 Running the container using docker will not restart it
@@ -32,8 +37,8 @@ automatically if it enters an unhealthy state. To have the container
 automatically restarted when it becomes unhealthy a container orchestrator must
 be used, such docker swarm or kubernetes.
 
-To run the container as a docker service and allow it to heal after failure run
-the following::
+To run the container as a docker service (swarm) and allow it to heal after
+failure run the following::
 docker swarm init
 docker service create --name ftrack-service-example --env FTRACK_SERVER --env FTRACK_API_USER --env FTRACK_API_KEY ftrack-service-example:latest
 
