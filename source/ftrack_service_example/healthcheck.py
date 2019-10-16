@@ -48,6 +48,3 @@ def publish(session):
 
     while _received_health_reply is False:
         session.event_hub.wait(0.01)
-
-    if _received_health_reply is False:
-        raise Exception('Health check failed.')
