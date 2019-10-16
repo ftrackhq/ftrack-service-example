@@ -46,5 +46,6 @@ def publish(session):
         on_reply=_handle_health_reply
     )
 
+    # This will wait forever if no reply comes back.
     while _received_health_reply is False:
-        session.event_hub.wait(0.01)
+        session.event_hub.wait(1)
