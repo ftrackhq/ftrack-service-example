@@ -1,5 +1,7 @@
 This is an example of how ftrack actions or event listeners can be built as a
-python module when they should run as a service.
+python module when they should run as a service. Multiple actions can be built
+into the same module if they need to share logic or are part of the same
+solution.
 
 The python module can be packaged as a docker image to
 simplify execution and distribution. The module has a built in health check
@@ -12,6 +14,15 @@ which is used to test that the module stay in a healthy state.
     shell is expected to have the following environment variables exported
     FTRACK_SERVER, FTRACK_API_USER, FTRACK_API_KEY and have a python virtual
     environment activated.
+
+.. note::
+
+    This module does not handle scaling out actions. It would however be
+    possible add a message to a queue instead of doing work async in the same
+    process. Separate workers could be setup to consume those messages in
+    parallel.
+
+Below is a list of useful commands that can be used to work with this module.
 
 Install for development::
 pip install -e .
