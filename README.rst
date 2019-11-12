@@ -24,8 +24,11 @@ which is used to test that the module stay in a healthy state.
 
 Below is a list of useful commands that can be used to work with this module.
 
-Install for development::
-pip install -e .
+Install for development
+
+.. code-block:: python
+
+    pip install -e .
 
 Run the module with python::
 python -m ftrack_service_example
