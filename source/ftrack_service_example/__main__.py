@@ -54,7 +54,7 @@ def main(arguments=None):
     )
 
     session = ftrack_api.Session(auto_connect_event_hub=True)
-
+    _healthcheck.register(session)
     if namespace.healthcheck:
         _healthcheck.publish(session)
         return
@@ -66,7 +66,7 @@ def main(arguments=None):
     for action in actions:
         action.register()
 
-    _healthcheck.register(session)
+
 
     # Wait for events
     logging.info(
