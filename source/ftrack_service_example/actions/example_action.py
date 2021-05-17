@@ -25,7 +25,7 @@ class ExampleAction(_BaseAction):
         '''Launch the action.'''
 
         self.logger.info(
-            u'Launching action with selection {0}'.format(entities)
+            'Launching action with selection {0}'.format(entities)
         )
 
         self._run_async(entities, event)
@@ -35,7 +35,7 @@ class ExampleAction(_BaseAction):
             'message': 'Successfully launched action.'
         }
 
-    @util.async
+    @util.run_async
     def _run_async(self, entities, event):
         '''Long running or blocking job.'''
 

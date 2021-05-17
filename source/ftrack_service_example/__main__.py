@@ -9,7 +9,7 @@ import time
 
 import ftrack_api
 
-import healthcheck as _healthcheck
+from . import healthcheck as _healthcheck
 from .actions.example_action import (
     ExampleAction as _ExampleAction
 )
@@ -33,7 +33,7 @@ def main(arguments=None):
     parser.add_argument(
         '-v', '--verbosity',
         help='Set the logging output verbosity.',
-        choices=loggingLevels.keys(),
+        choices=list(loggingLevels.keys()),
         default='info'
     )
 

@@ -4,7 +4,7 @@
 import threading
 
 
-def async(fn):
+def run_async(fn):
     '''Run *fn* asynchronously.'''
     def wrapper(*args, **kwargs):
         thread = threading.Thread(target=fn, args=args, kwargs=kwargs)

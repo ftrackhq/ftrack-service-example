@@ -1,10 +1,10 @@
-FROM python:2.7-slim as base
+FROM python:3.9-slim as base
 MAINTAINER ftrack <sysop@ftrack.com>
 
 COPY ./ /ftrack-service-example
 RUN pip install /ftrack-service-example
 
-FROM python:2.7-slim as final
+FROM python:3.9-slim as final
 
 COPY --from=base /usr/local /usr/local
 
