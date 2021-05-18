@@ -6,6 +6,7 @@ import logging
 import sys
 import warnings
 import time
+import signal
 
 import ftrack_api
 
@@ -65,6 +66,12 @@ def main(arguments=None):
 
     for action in actions:
         action.register()
+
+    def signal_handler(sig, frame):
+        session.event_hub.disconnect()
+        raise SystemExit(0)
+
+    signal.signal(signal.SIGINT, signal_handler)
 
 
 
