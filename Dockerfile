@@ -1,11 +1,11 @@
 FROM python:3.9-slim as base
-MAINTAINER ftrack <sysop@ftrack.com>
+LABEL maintainer="ftrack <sysop@ftrack.com>"
 
 COPY ./ /ftrack-service-example
 
 RUN python -m venv /opt/ftrack && \
     /opt/ftrack/bin/pip install pip -U && \
-    /opt/ftrack/bin/pip install --use-feature=in-tree-build /ftrack-service-example
+    /opt/ftrack/bin/pip install /ftrack-service-example
 
 FROM python:3.9-slim as final
 

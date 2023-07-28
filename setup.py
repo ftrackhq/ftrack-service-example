@@ -15,7 +15,7 @@ SOURCE_PATH = os.path.join(
     ROOT_PATH, 'source'
 )
 
-README_PATH = os.path.join(ROOT_PATH, 'README.rst')
+README_PATH = os.path.join(ROOT_PATH, 'README.md')
 
 
 with open(os.path.join(
